@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     {% load staticfiles %}
     <meta charset="utf-8">
@@ -7,11 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Biju Sasidharan</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
@@ -48,51 +49,23 @@
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link" href="http://twitter.com/bijusasidharan">Twitter</a>
                     <a class="nav-item nav-link" href="{% static 'resume.doc' %}">Resume</a>
-                    <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+                    <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main role="main">
+        <div class="container">
 
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1 class="jumbotron-heading">Hi, I'm Biju Sasidharan.</h1>
-                <p class="lead text-muted">Hey, my name is Biju Sasidharan and I love working with data!</p>
-                <p>
-                    <a href="mailto:biju.sasidharan@gmail.com" class="btn btn-primary my-2">Email Me</a>
-                </p>
-                <img  src="{% static 'biju1.jpg' %}" height=250 weight=250/>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-
-                <div class="row">
-                    {% for job in jobs.all %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                                focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" />
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                                <image xlink:href="https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png" height="200" width="200"/>
-                            </svg>-->
-                            <img class="card-img-top" src="{{ job.image.url }}" height="200" weight="200">
-                            <div class="card-body">
-                                <p class="card-text">{{ job.summary }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
+            <h1 class="text-center pt-3">{{ blog.title }}</h1>
+            <p class="text-center">{{ blog.pub_date }}</p>
+            <img class="img-fluid" src="{{ blog.image.url }}" />
+            <br />
+            <br />
+            <p>{{ blog.body }}</p>
+            <br />
         </div>
-
     </main>
 
     <footer class="text-muted">
